@@ -26,7 +26,7 @@ namespace CapaEntidad
         public string IdUbicacion { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
-        public string FechaTexto { get; set; }
+        public string  FechaTexto { get; set; }
         public string IdTransaccion { get; set; }
     }
 }
