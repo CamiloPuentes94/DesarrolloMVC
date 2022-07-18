@@ -11,6 +11,9 @@ namespace CapaPresentacionAdmin
             bundles.Add(new Bundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new Bundle("~/bundles/complements").Include(
+                        "~/Scripts/scripts.js"));
+
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.validate*"));
 
