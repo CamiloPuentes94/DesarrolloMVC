@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-//    CREATE TABLE CATEGORIA(
-//IdCategoria int primary key identity,
-//Descripcion varchar(100),
-//activo bit default 1,
-//FechaRegistro datetime default getdate()
-//)
-//go
+
     public class Categoria
     {
         public int IdCategoria { get; set; }
