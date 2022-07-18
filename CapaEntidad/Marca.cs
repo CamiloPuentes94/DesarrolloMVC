@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-    class Marca
+    public class Marca
     {
+        public int IdMarca { get; set; }
+        public string Descripcion { get; set; }
+        public bool activo { get; set; }
     }
 }
