@@ -8,8 +8,8 @@ namespace CapaEntidad
 {
     public class Ciudad
     {
-        public int IdCiudad { get; set; }
-        public int Decripcion { get; set; }
-        public int IdDepartamento { get; set; }
+        public string IdCiudad { get; set; }
+        public string Decripcion { get; set; }
+        public string IdDepartamento { get; set; }
     }
 }
