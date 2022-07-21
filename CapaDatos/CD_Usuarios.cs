@@ -20,7 +20,7 @@ namespace CapaDatos
                 // realizando conexion y consulta sql
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    string query = "select IdUsuario, Nombre, Apellido, Correo, Clave, Reestablecer,Activo from USUARIO";
+                    string query = "select IdUsuario,Nombre,Apellido,Correo,Clave,Reestablecer,Activo from USUARIO";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
