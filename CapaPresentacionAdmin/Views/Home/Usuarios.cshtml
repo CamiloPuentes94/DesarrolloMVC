@@ -31,7 +31,7 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Apellidos</th>
+                    <th>Apellido</th>
                     <th>Correo</th>
                     <th>Activo</th>
                 </tr>
@@ -47,18 +47,42 @@
     <script>
         var tablaData;
 
+        // Explicacion de ajax
         jQuery.ajax({
             url: '@Url.Action("ListarUsuarios","Home")',
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-               
+
                 console.log(data)
             }
         })
 
         //se convierte en data table la tabla realizada anteriormente
-        tablaData = $("#tabla").DataTable()
+        tablaData = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarUsuarios","Home")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { "data": "Nombre" },
+                {"data": "Apellido"},
+                { "data": "Correo" },
+                {
+                    "data": "Activo", "render": function (valor) {
+                        if (valor) {
+                            return '<button type="button" class="btn btn-success">Si</button>'
+                        }
+                        else {
+                            return '<button type="button" class="btn btn-danger">No</button>'
+                        }
+                    }
+                }
+            ]
+        })
     </script>
     }
