@@ -21,7 +21,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear Nuevo Usuario</button>
+                <button type="button" class="btn btn-success" onclick="abrirModal(null)">Crear Nuevo Usuario</button>
             </div>
         </div>
 
@@ -45,12 +45,12 @@
 
 
 <!-- Modal o pantalla emergente -->
-<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body g-2">
                 <div class="row">
@@ -126,12 +126,25 @@
                     "width": "90px"
                 }
             ],
+            // Cambiode lenguaje a español
             "language": { "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json" }
         });
 
-        function abrirModal() {
+        // Funcion de apertura de modal, y obtencion de datos
+        function abrirModal(json) {
+            //Si 
+            if (json != null) {
+
+                $("#txtnombre").val(json.Nombre);
+                $("#txtapellido").val(json.Apellido);
+                $("#txtcorreo").val(json.Correo);
+                $("#cboactivo").val(json.Activo == true ? 1 : 0);
+            }
+
             $("#FormModal").modal("show")
         }
+
+        // evento de click del boton editar de la dataTable y abrir el modal
 
         $("#tabla tbody").on("click", '.btn-editar', function () {
             //De esta manera seleccionamos una fila de la tabla
@@ -139,7 +152,7 @@
 
             var data = tablaData.row(filaseleccionada).data();
 
-
+            abrirModal(data)
         })
 
 
