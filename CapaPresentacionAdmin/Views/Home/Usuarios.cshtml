@@ -85,7 +85,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary " onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
@@ -96,6 +96,7 @@
 @section scripts{
     <script>
         var tablaData;
+        var filaseleccionada;
 
         //se convierte en data table la tabla realizada anteriormente
         tablaData = $("#tabla").DataTable({
@@ -132,7 +133,8 @@
             // Cambiode lenguaje a español
             "language": { "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json" }
         });
-
+        //
+        //
         // Funcion de apertura de modal, y obtencion de datos
         function abrirModal(json) {
 
@@ -157,17 +159,42 @@
 
             $("#FormModal").modal("show")
         }
-
+        //
         // evento de click del boton editar de la dataTable y abrir el modal
-
         $("#tabla tbody").on("click", '.btn-editar', function () {
             //De esta manera seleccionamos una fila de la tabla
-            var filaseleccionada = $(this).closest("tr");
+            filaseleccionada = $(this).closest("tr");
 
             var data = tablaData.row(filaseleccionada).data();
 
             abrirModal(data)
+
+            console.log(data)
         })
+
+        // Metodo de Guardar
+
+        function Guardar() {
+
+            var Usuario = {
+                IdUsuario: $("#txtid").val(),
+                Nombre: $("#txtnombre").val(),
+                Apellido: $("#txtapellido").val(),
+                Correo: $("#txtcorreo").val(),
+                Activo: $("#cboactivo").val() == 1 ? true: false
+            }
+
+            if (Usuario.IdUsuario == 0) {
+                // De esta manera agrega y escribe en la data table
+                tablaData.row.add(Usuario).draw(false);
+            } else {
+
+                tablaData.row(filaseleccionada).data(Usuario).draw(false);
+                
+                
+            }
+            $("#FormModal").modal("hide")
+        }
 
 
     </script>
