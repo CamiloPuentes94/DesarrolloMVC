@@ -132,12 +132,21 @@
 
         // Funcion de apertura de modal, y obtencion de datos
         function abrirModal(json) {
-            //Si 
+
+            // Borrar valores del formulario cuando es null el valor de json
+            $("#txtnombre").val("");
+            $("#txtapellido").val("");
+            $("#txtcorreo").val("");
+            $("#cboactivo").val(1);
+
+
+            // Si el valor es diferente a null escriba los valores en cada formulario
             if (json != null) {
 
                 $("#txtnombre").val(json.Nombre);
                 $("#txtapellido").val(json.Apellido);
                 $("#txtcorreo").val(json.Correo);
+                // Si el valor es igual a true escriba 1 y si no es 0 
                 $("#cboactivo").val(json.Activo == true ? 1 : 0);
             }
 
