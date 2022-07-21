@@ -4,10 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*En esta seccion ponemos la referencia de donde estamos trabajando*@
+
 <ol class="breadcrumb mb-4 mt-4">
     <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
     <li class="breadcrumb-item active">Usuarios</li>
 </ol>
+
+@* En esta seccion pondremos el diseño para  colocar la tabla de la lista de  usuario y un contenedor para agregar el boton de crear nuevo usuario *@
 
 <div class="card">
     <div class="card-header">
@@ -38,3 +42,21 @@
         </table>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        jQuery.ajax({
+            url: '@Url.Action("ListarUsuarios","Home")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                debugger;
+
+                var texto1 = "Hola"
+
+                console.log(data)
+            }
+        })
+    </script>
+    }
